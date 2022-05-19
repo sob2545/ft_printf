@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ptr_form.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/17 16:41:11 by sesim             #+#    #+#             */
-/*   Updated: 2022/05/19 17:28:32 by sesim            ###   ########.fr       */
+/*   Created: 2022/05/19 16:34:47 by sesim             #+#    #+#             */
+/*   Updated: 2022/05/19 17:18:40 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
+#include <stdint.h>
 
-# include <unistd.h>
+int	form_p(uintptr_t p)
+{
+	int	res;
 
-int	ft_printf(const char *format, ...);
-int	form_c(int c);
-int	form_s(char *s);
-int	form_d(int d);
-int	form_u(unsigned int u);
-int	form_p(uintptr_t p);
-int	form_x(unsigned int x, char format);
-
-#endif
+	res = write(1, "0x", 2);
+	if (p == 0)
+		res += write(1, "0", 1);
+	else
+		res += form_x(p, 'x');
+	return (res);
+}

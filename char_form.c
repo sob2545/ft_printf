@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:56:19 by sesim             #+#    #+#             */
-/*   Updated: 2022/05/18 11:47:43 by seongmins        ###   ########.fr       */
+/*   Updated: 2022/05/19 18:11:01 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,4 @@ int	form_s(char *s)
 		i++;
 	}
 	return (i);
-}
-
-int	form_x(unsigned int x, char format)
-{
-	int	res;
-	int	c;
-
-	c = 0;
-	res = 0;
-	while (x != 0)
-	{
-		if (x > 16)
-			
-	}
 }

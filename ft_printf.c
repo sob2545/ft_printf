@@ -6,12 +6,13 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:56:58 by sesim             #+#    #+#             */
-/*   Updated: 2022/05/17 17:58:49 by seongmins        ###   ########.fr       */
+/*   Updated: 2022/05/19 17:29:06 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <unistd.h>
+#include <stdarg.h>
+#include <stdint.h>
 
 int	format_checker(va_list *ap, const char format)
 {
@@ -27,34 +28,32 @@ int	format_checker(va_list *ap, const char format)
 	else if (format == 'u')
 		res += form_u(va_arg(*ap, unsigned int));
 	else if (format == 'p')
-		res += form_p((unsigned long long)va_arg(*ap, void *));
-	else if (format == 'x')
-		res += form_x(va_arg(*ap, unsigned int));
-	else if (format == 'X')
-		res += form_X(va_arg(*ap, unsigned int));
+		res += form_p((uintptr_t)va_arg(*ap, void *));
+	else if (format == 'x' || format == 'X')
+		res += form_x(va_arg(*ap, unsigned int), format);
 	else if (format == '%')
 		res += write(1, "%", 1);
 	return (res);
 }
 
-int	ft_printf(const char *str, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	int		res;
-	
-	va_start(ap, str);
+
+	va_start(ap, format);
 	res = 0;
-	while (*str != 0)
+	while (*format != 0)
 	{
-		if (*str == '%')
+		if (*format == '%')
 		{
-			res += format_checker(&ap, *(str + 1));
-			str += 2;
+			res += format_checker(&ap, *(format + 1));
+			format += 2;
 		}
 		else
 		{
-			res += write(1, str, 1);
-			str++;
+			res += write(1, format, 1);
+			format++;
 		}
 	}
 	va_end(ap);

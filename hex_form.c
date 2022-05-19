@@ -6,29 +6,32 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 18:11:40 by sesim             #+#    #+#             */
-/*   Updated: 2022/05/19 18:23:18 by sesim            ###   ########.fr       */
+/*   Updated: 2022/05/19 22:17:37 by seongmins        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdint.h>
 
 void	print_hex(unsigned int x, const char format, int *res)
 {
-	char	*up_hex;
-	char	*lw_hex;
-
-	up_hex = "0123456789ABCDEF";
-	lw_hex = "0123456789abcdef";
-	if (x == 0)
-		return ;
+	if (x >= 16)
+	{
+		print_hex(x / 16, format, res);
+		print_hex(x % 16, format, res);
+	}
 	else
 	{
-		print_hex(x, format, res);
-		if (format == 'x')
-			write(1, &lw_hex[x % 16], 1);
-		else if (format == 'X')
-			write(1, &up_hex[x % 16], 1);
-		res++;
+		if (x <= 9)
+			form_c(x + '0');
+		else
+		{
+			if (format == 'x')
+				form_c(x - 10 + 'a');
+			else if (format == 'X')
+				form_c(x - 10 + 'A');
+		}
+		(*res)++;
 	}
 }
 
@@ -41,5 +44,34 @@ int	form_x(unsigned int x, const char format)
 		res += write(1, "0", 1);
 	else
 		print_hex(x, format, &res);
+	return (res);
+}
+
+void	print_ptr(uintptr_t p, int *res)
+{
+	if (p >= 16)
+	{
+		print_ptr(p / 16, res);
+		print_ptr(p % 16, res);
+	}
+	else
+	{
+		if (p <= 9)
+			form_c(p + '0');
+		else
+			form_c(p - 10 + 'a');
+		(*res)++;
+	}
+}
+
+int	form_p(uintptr_t p)
+{
+	int	res;
+
+	res = write(1, "0x", 2);
+	if (p == 0)
+		res += write(1, "0", 1);
+	else
+		print_ptr(p, &res);
 	return (res);
 }

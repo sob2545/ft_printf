@@ -6,7 +6,7 @@
 #    By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 17:30:49 by sesim             #+#    #+#              #
-#    Updated: 2022/05/19 18:25:07 by sesim            ###   ########.fr        #
+#    Updated: 2022/05/19 22:18:29 by seongmins        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,7 @@ SRCS = ft_printf.c \
 	   char_form.c \
 	   num_form.c \
 	   unum_form.c \
-	   hex_form.c \
-	   ptr_form.c
+	   hex_form.c
 
 OBJS = $(SRCS:.c=.o)
 

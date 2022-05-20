@@ -6,13 +6,12 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:56:58 by sesim             #+#    #+#             */
-/*   Updated: 2022/05/19 17:29:06 by sesim            ###   ########.fr       */
+/*   Updated: 2022/05/20 15:05:59 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdarg.h>
-#include <stdint.h>
 
 int	format_checker(va_list *ap, const char format)
 {

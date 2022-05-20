@@ -6,12 +6,11 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 18:11:40 by sesim             #+#    #+#             */
-/*   Updated: 2022/05/19 22:17:37 by seongmins        ###   ########.fr       */
+/*   Updated: 2022/05/20 15:06:12 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdint.h>
 
 void	print_hex(unsigned int x, const char format, int *res)
 {

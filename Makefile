@@ -6,12 +6,12 @@
 #    By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 17:30:49 by sesim             #+#    #+#              #
-#    Updated: 2022/05/20 15:47:49 by sesim            ###   ########.fr        #
+#    Updated: 2022/05/22 15:09:18 by sesim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAG = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 SRCS = ft_printf.c \

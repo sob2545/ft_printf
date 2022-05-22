@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:50:33 by sesim             #+#    #+#             */
-/*   Updated: 2022/05/19 17:42:22 by sesim            ###   ########.fr       */
+/*   Updated: 2022/05/22 13:09:41 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	form_d(int d)
 
 	val = ft_itoa(d);
 	res = form_s(val);
-	free(val);
+	if (val != 0)
+		free(val);
 	return (res);
 }
